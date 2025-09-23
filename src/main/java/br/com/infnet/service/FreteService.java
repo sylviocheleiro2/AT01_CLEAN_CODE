@@ -9,7 +9,8 @@ import br.com.infnet.service.frete.CalculadoraFretePadrao;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
-public class FreteService {
+public class FreteService
+{
     private final Map<String, CalculadoraFrete> calculadoras;
 
     public FreteService() {
@@ -19,12 +20,14 @@ public class FreteService {
         calculadoras.put("ECO", new CalculadoraFreteEconomico());
     }
 
-    public double calcularFrete(Entrega entrega) {
+    public double calcularFrete(Entrega entrega)
+    {
         CalculadoraFrete calculadora = calculadoras.get(entrega.getTipoFrete().toUpperCase());
         if (calculadora == null) {
             throw new IllegalArgumentException("Tipo de frete inválido: " + entrega.getTipoFrete());
         }
         return calculadora.calcular(entrega);
     }
-}
+
+}//
 

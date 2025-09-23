@@ -14,20 +14,19 @@ class EtiquetaServiceTest {
     @BeforeEach
     void setUp() {
         etiquetaService = new EtiquetaService();
-        entrega = new Entrega("Av. Atlântica, 1702", 5.0, "PAD", "Fulano de Tal");
+        entrega = new Entrega("Av 01", 5.0, "PAD", "joão silva");
     }
 
     @Test
     @DisplayName("Deve gerar a etiqueta de envio no formato correto")
     void deveGerarEtiquetaCorretamente() {
         double valorFrete = 6.00;
-        String etiquetaEsperada = "Destinatário: Fulano de Tal\n" +
+        String etiquetaEsperada = "Destinatário: joão silva\n" +
                                   "Endereço: Av. Atlântica, 1702\n" +
                                   "Valor do Frete: R$6,00";
 
         String etiquetaGerada = etiquetaService.gerarEtiqueta(entrega, valorFrete);
 
-        // Substituir vírgula por ponto para consistência entre locales
         assertEquals(etiquetaEsperada.replace(',', '.'), etiquetaGerada.replace(',', '.'));
     }
 
@@ -35,7 +34,7 @@ class EtiquetaServiceTest {
     @DisplayName("Deve gerar o resumo do pedido no formato correto")
     void deveGerarResumoCorretamente() {
         double valorFrete = 6.00;
-        String resumoEsperado = "Pedido para Fulano de Tal com frete tipo PAD no valor de R$6,00";
+        String resumoEsperado = "Pedido para joão silva com frete tipo PAD no valor de R$6,00";
 
         String resumoGerado = etiquetaService.gerarResumo(entrega, valorFrete);
 

@@ -1,12 +1,14 @@
 package br.com.infnet.model;
 
-public class Entrega {
+public class Entrega
+{
     private final String endereco;
     private final double peso;
     private final String tipoFrete;
     private final String destinatario;
 
-    public Entrega(String endereco, double peso, String tipoFrete, String destinatario) {
+    public Entrega(String endereco, double peso, String tipoFrete, String destinatario)
+    {
         if (endereco == null || endereco.trim().isEmpty()) {
             throw new IllegalArgumentException("Endereço não pode ser nulo ou vazio.");
         }
